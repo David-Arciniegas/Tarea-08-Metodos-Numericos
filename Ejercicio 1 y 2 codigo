@@ -1,0 +1,141 @@
+import numpy as np
+from scipy.optimize import curve_fit
+import matplotlib.pyplot as plt
+
+# Datos
+x = np.array([4.0, 4.2, 4.5, 4.7, 5.1, 5.5, 5.9, 6.3, 6.8, 7.1])
+y = np.array([102.56, 130.11, 113.18, 142.05, 167.53, 195.14, 224.87, 256.73, 299.50, 326.72])
+
+# a. Polinomio de grado 1 (lineal)
+coef_1 = np.polyfit(x, y, 1)
+poly_1 = np.poly1d(coef_1)
+y_fit_1 = poly_1(x)
+error_1 = np.sum((y - y_fit_1)**2)
+print("a. Polinomio de grado 1: ", coef_1)
+print("Error: ", error_1)
+
+
+# Gráficas
+plt.scatter(x, y, label='Datos')
+plt.plot(x, y_fit_1, label='Polinomio grado 1')
+plt.legend()
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Ajuste de curvas por mínimos cuadrados')
+plt.show()
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+import numpy as np
+from scipy.optimize import curve_fit
+import matplotlib.pyplot as plt
+
+# Datos
+x = np.array([4.0, 4.2, 4.5, 4.7, 5.1, 5.5, 5.9, 6.3, 6.8, 7.1])
+y = np.array([102.56, 130.11, 113.18, 142.05, 167.53, 195.14, 224.87, 256.73, 299.50, 326.72])
+
+# b. Polinomio de grado 2
+coef_2 = np.polyfit(x, y, 2)
+poly_2 = np.poly1d(coef_2)
+y_fit_2 = poly_2(x)
+error_2 = np.sum((y - y_fit_2)**2)
+print("b. Polinomio de grado 2: ", coef_2)
+print("Error: ", error_2)
+
+
+# Gráficas
+plt.scatter(x, y, label='Datos')
+plt.plot(x, y_fit_2, label='Polinomio grado 2')
+plt.legend()
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Ajuste de curvas por mínimos cuadrados')
+plt.show()
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+import numpy as np
+from scipy.optimize import curve_fit
+import matplotlib.pyplot as plt
+
+# Datos
+x = np.array([4.0, 4.2, 4.5, 4.7, 5.1, 5.5, 5.9, 6.3, 6.8, 7.1])
+y = np.array([102.56, 130.11, 113.18, 142.05, 167.53, 195.14, 224.87, 256.73, 299.50, 326.72])
+
+# c. Polinomio de grado 3
+coef_3 = np.polyfit(x, y, 3)
+poly_3 = np.poly1d(coef_3)
+y_fit_3 = poly_3(x)
+error_3 = np.sum((y - y_fit_3)**2)
+print("c. Polinomio de grado 3: ", coef_3)
+print("Error: ", error_3)
+
+# Gráficas
+plt.scatter(x, y, label='Datos')
+plt.plot(x, y_fit_3, label='Polinomio grado 3')
+plt.legend()
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Ajuste de curvas por mínimos cuadrados')
+plt.show()
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+import numpy as np
+from scipy.optimize import curve_fit
+import matplotlib.pyplot as plt
+
+# Datos
+x = np.array([4.0, 4.2, 4.5, 4.7, 5.1, 5.5, 5.9, 6.3, 6.8, 7.1])
+y = np.array([102.56, 130.11, 113.18, 142.05, 167.53, 195.14, 224.87, 256.73, 299.50, 326.72])
+
+
+# d. Función de la forma y = b * e^(a*x)
+def func_exp(x, a, b):
+    return b * np.exp(a * x)
+
+params_exp, _ = curve_fit(func_exp, x, y, p0=(0.1, 1))
+y_fit_exp = func_exp(x, *params_exp)
+error_exp = np.sum((y - y_fit_exp)**2)
+print("d. Función de la forma y = b * e^(a*x): ", params_exp)
+print("Error: ", error_exp)
+
+# Gráficas
+plt.scatter(x, y, label='Datos')
+plt.plot(x, y_fit_exp, label='b * e^(a*x)')
+plt.legend()
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Ajuste de curvas por mínimos cuadrados')
+plt.show()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+import numpy as np
+from scipy.optimize import curve_fit
+import matplotlib.pyplot as plt
+
+# Datos
+x = np.array([4.0, 4.2, 4.5, 4.7, 5.1, 5.5, 5.9, 6.3, 6.8, 7.1])
+y = np.array([102.56, 130.11, 113.18, 142.05, 167.53, 195.14, 224.87, 256.73, 299.50, 326.72])
+
+
+# e. Función de la forma y = b * x^a
+def func_power(x, a, b):
+    return b * x**a
+
+params_power, _ = curve_fit(func_power, x, y, p0=(1, 1))
+y_fit_power = func_power(x, *params_power)
+error_power = np.sum((y - y_fit_power)**2)
+print("e. Función de la forma y = b * x^a: ", params_power)
+print("Error: ", error_power)
+
+
+# Gráficas
+plt.scatter(x, y, label='Datos')
+plt.plot(x, y_fit_power, label='b * x^a')
+plt.legend()
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Ajuste de curvas por mínimos cuadrados')
+plt.show()
