@@ -1,0 +1,25 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Datos proporcionados
+peso_promedio = np.array([4800, 3700, 3400, 2800, 1900])
+porcentaje_presentacion = np.array([3.1, 4.0, 5.2, 6.4, 9.6])
+
+# Ajuste de una recta (polinomio de grado 1)
+coef = np.polyfit(peso_promedio, porcentaje_presentacion, 1)
+poly = np.poly1d(coef)
+y_fit = poly(peso_promedio)
+
+# Calcular el error
+error = np.sum((porcentaje_presentacion - y_fit)**2)
+print("Coeficientes de la recta: ", coef)
+print("Error: ", error)
+
+# Graficar los datos y la recta ajustada
+plt.scatter(peso_promedio, porcentaje_presentacion, label='Datos')
+plt.plot(peso_promedio, y_fit, label='Ajuste por mínimos cuadrados', color='red')
+plt.xlabel('Peso promedio (lb)')
+plt.ylabel('Porcentaje de presentación')
+plt.title('Ajuste por mínimos cuadrados')
+plt.legend()
+plt.show()
