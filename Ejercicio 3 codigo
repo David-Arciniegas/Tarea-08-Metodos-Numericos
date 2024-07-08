@@ -1,0 +1,25 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Datos proporcionados
+ACT_scores = np.array([28, 25, 28, 27, 28, 33, 29, 29, 23, 27, 29, 28, 27, 29, 21, 28, 28, 26, 30, 24])
+average_scores = np.array([3.84, 3.21, 3.23, 3.63, 3.75, 3.20, 3.41, 3.38, 3.53, 2.03, 3.75, 3.65, 3.87, 3.75, 1.66, 3.12, 2.96, 2.92, 3.10, 2.81])
+
+# Ajuste de una recta (polinomio de grado 1)
+coef = np.polyfit(ACT_scores, average_scores, 1)
+poly = np.poly1d(coef)
+y_fit = poly(ACT_scores)
+
+# Calcular el error
+error = np.sum((average_scores - y_fit)**2)
+print("Coeficientes de la recta: ", coef)
+print("Error: ", error)
+
+# Graficar los datos y la recta ajustada
+plt.scatter(ACT_scores, average_scores, label='Datos')
+plt.plot(ACT_scores, y_fit, label='Ajuste por mínimos cuadrados', color='red')
+plt.xlabel('Puntuación ACT')
+plt.ylabel('Promedio de puntos')
+plt.title('Ajuste por mínimos cuadrados')
+plt.legend()
+plt.show()
